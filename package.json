@@ -7,7 +7,7 @@
     "dev": "nx serve api",
     "docker:build": "docker build . -t ghcr.io/kin-starters/kinetic-airdrop-node",
     "docker:push": "docker push ghcr.io/kin-starters/kinetic-airdrop-node",
-    "docker:run": "docker run -it -p 8000:3000 ghcr.io/kin-starters/kinetic-airdrop-node",
+    "docker:run": "docker run -it -p 7890:7890 --env-file ./.env ghcr.io/kin-starters/kinetic-airdrop-node",
     "generate-keypair": "yarn nx workspace-generator generate-keypair",
     "start": "node dist/api/main.js",
     "test": "nx test"
@@ -17,6 +17,7 @@
     "@kin-kinetic/keypair": "^1.0.0-rc.3",
     "@kin-kinetic/sdk": "^1.0.0-rc.3",
     "@kin-kinetic/solana": "^1.0.0-rc.3",
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "tslib": "^2.3.0"
   },
