@@ -97,7 +97,10 @@ export class Kinetic {
   private async createAccount(): Promise<string[]> {
     console.log(`💧 Airdrop account: creating account ${this.publicKey}...`)
     // Create Account
-    const created = await this.sdk.createAccount({ owner: this.keypair, commitment: Commitment.Finalized })
+    const created = await this.sdk.createAccount({
+      owner: this.keypair,
+      commitment: Commitment.Finalized,
+    })
     console.log(`💧 Airdrop account: created account ${this.sdk.getExplorerUrl(`tx/${created.signature}`)}...`)
     // Resolve Token Account
     return this.sdk.getTokenAccounts({ account: this.publicKey })
