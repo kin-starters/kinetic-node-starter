@@ -5,11 +5,7 @@ import { TransactionType } from '@kin-tools/kin-memo'
 import { ServerConfig } from '../server/server-config'
 
 export class Kinetic {
-  constructor(
-    private readonly config: ServerConfig,
-    private readonly sdk: KineticSdk,
-    private readonly keypair: Keypair,
-  ) {}
+  constructor(readonly config: ServerConfig, private readonly sdk: KineticSdk, private readonly keypair: Keypair) {}
 
   get mint(): AppConfigMint {
     return this.sdk.config!.mint!
@@ -67,6 +63,7 @@ export class Kinetic {
     console.log(`💧 Airdrop amounts: default: ${this.config.airdropAmount}, max: ${this.config.airdropMax}`)
     console.log(`💧 Airdrop allow airdrop to empty accounts: ${this.config.airdropAllowNew ? 'yes' : 'no'}`)
     console.log(`💧 Airdrop allow airdrop to existing accounts: ${this.config.airdropAllowExisting ? 'yes' : 'no'}`)
+    console.log(`💧 Airdrop secret: ${this.config.airdropSecret ? 'enabled' : 'disabled'}`)
 
     // Get the balance of this account
     const account = await this.sdk.getBalance({ account: this.publicKey })

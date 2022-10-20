@@ -4,6 +4,7 @@ export interface ServerConfig {
   airdropAmount: string
   airdropMax: string
   airdropMnemonic: string
+  airdropSecret?: string
   endpoint: string
   environment: string
   index: number
@@ -34,6 +35,7 @@ export function getServerConfig(): ServerConfig {
     airdropAmount: process.env.AIRDROP_AMOUNT!,
     airdropMax: process.env.AIRDROP_MAX || process.env.AIRDROP_AMOUNT!,
     airdropMnemonic: process.env.AIRDROP_MNEMONIC!,
+    airdropSecret: process.env.AIRDROP_SECRET,
     endpoint: process.env.ENDPOINT!,
     environment: process.env.ENVIRONMENT!,
     index: Number(process.env.INDEX),
