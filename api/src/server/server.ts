@@ -4,7 +4,7 @@ import * as express from 'express'
 import { Request, Response } from 'express'
 
 import { Kinetic } from '../lib'
-import { airdropRoute } from './routes/airdrop.route'
+import { paymentRoute } from './routes/payment.route'
 import { uptimeRoute } from './routes/uptime.route'
 import { webhookRoute } from './routes/webhook.route'
 import { ServerConfig } from './server-config'
@@ -19,15 +19,14 @@ export async function server(config: ServerConfig) {
   })
 
   // Create instance of our Kinetic helper class
-  const kinetic = new Kinetic(config, sdk, Keypair.fromMnemonic(config.airdropMnemonic))
+  const kinetic = new Kinetic(config, sdk, Keypair.fromMnemonic(config.paymentMnemonic))
 
   // Set up Express server
   const app = express()
   app.use(express.json())
 
-  // Airdrop Routes, pass in our Kinetic helper class
-  app.use('/airdrop/:destination/:amount', airdropRoute({ kinetic }))
-  app.use('/airdrop/:destination', airdropRoute({ kinetic }))
+  // Payment Routes, pass in our Kinetic helper class
+  app.use('/payment/:destination/:amount', paymentRoute({ kinetic }))
 
   // Webhook Routes, pass in our Kinetic helper class
   app.post('/webhook/:type', webhookRoute({ kinetic }))
@@ -47,15 +46,15 @@ export async function server(config: ServerConfig) {
     )
     sdk.config?.mints.forEach((mint) => {
       console.log(
-        `⬢ Kinetic: Mint: ${mint.name} ${mint.publicKey} (${mint.decimals} decimals) (Airdrop: ${
+        `⬢ Kinetic: Mint: ${mint.name} ${mint.publicKey} (${mint.decimals} decimals) (Payment: ${
           mint.airdrop ? `max ${mint.airdropMax} ${mint.symbol}` : 'disabled'
         }) `,
       )
     })
 
-    // Initialize AirdropAccount
-    kinetic.findOrCreateAirdropAccount().then(() => {
-      console.log(`💧 Ready to drop!`)
+    // Initialize PaymentAccount
+    kinetic.findOrCreateAccount().then(() => {
+      console.log(`⬢ Payment: link /payment/<destination>/<amount>`)
     })
   })
 }

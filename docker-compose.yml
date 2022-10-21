@@ -1,7 +1,7 @@
 version: '3'
 services:
   api:
-    image: ghcr.io/kin-starters/kinetic-airdrop-node:latest
+    image: ghcr.io/kin-starters/kinetic-node-starter:latest
     #    Uncomment the following line to run the local image instead of the one from the registry
     #    build: .
     ports:

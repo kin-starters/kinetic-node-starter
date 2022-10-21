@@ -1,16 +1,16 @@
 import { Request, Response } from 'express'
 import { Kinetic } from '../../lib'
 
-export function airdropRoute({ kinetic }: { kinetic: Kinetic }) {
+export function paymentRoute({ kinetic }: { kinetic: Kinetic }) {
   return async (req: Request, res: Response) => {
     if (
-      kinetic.config.airdropSecret?.length &&
-      (!req.headers.authorization || req.headers.authorization !== kinetic.config.airdropSecret)
+      kinetic.config.paymentSecret?.length &&
+      (!req.headers.authorization || req.headers.authorization !== kinetic.config.paymentSecret)
     ) {
       return res.status(401).send('Unauthorized')
     }
     try {
-      const result = await kinetic.airdrop({
+      const result = await kinetic.payment({
         amount: req.params.amount,
         destination: req.params.destination,
       })

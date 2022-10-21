@@ -5,9 +5,9 @@
   "scripts": {
     "build": "nx build api --prod",
     "dev": "nx serve api",
-    "docker:build": "docker build . -t ghcr.io/kin-starters/kinetic-airdrop-node",
-    "docker:push": "docker push ghcr.io/kin-starters/kinetic-airdrop-node",
-    "docker:run": "docker run -it -p 7890:7890 --env-file ./.env ghcr.io/kin-starters/kinetic-airdrop-node",
+    "docker:build": "docker build . -t ghcr.io/kin-starters/kinetic-node-starter",
+    "docker:push": "docker push ghcr.io/kin-starters/kinetic-node-starter",
+    "docker:run": "docker run -it -p 7890:7890 --env-file ./.env ghcr.io/kin-starters/kinetic-node-starter",
     "generate-keypair": "yarn nx workspace-generator generate-keypair",
     "start": "node dist/api/main.js",
     "test": "nx test"

@@ -1,10 +1,12 @@
-# kinetic-airdrop-node
+# kinetic-node-starter
 
-This starter shows how to implement a simple API that allows you to airdrop KIN to a Solana account using [Kinetic](https://github.com/kin-labs/kinetic).
+This starter shows how to implement a simple API that allows you to send KIN to a Solana account using [Kinetic](https://github.com/kin-labs/kinetic).
 
-In order to send the KIN, this API needs to have an Airdrop Account configured. Read the details in `.env.example` about how to create an Airdrop Account.
+Read the details in `.env.example` about how to create an Payment Account.
 
-Make sure to protect your endpoints for malicious users, so they don't drain your Airdrop Account.
+Make sure to protect your endpoints for malicious users, so they don't drain your Payment Account.
+
+It also implements the webhook listener for the Kinetic API.
 
 ## Requirements
 
@@ -17,8 +19,8 @@ Make sure to protect your endpoints for malicious users, so they don't drain you
 ### 1. Clone the repo
 
 ```shell
-git clone https://github.com/kin-starters/kinetic-airdrop-node.git
-cd kinetic-airdrop-node
+git clone https://github.com/kin-starters/kinetic-node-starter.git
+cd kinetic-node-starter
 ```
 
 ### 2. Install the dependencies
@@ -46,14 +48,18 @@ yarn dev
 
 ### 5. Invoke the endpoint
 
-You can now invoke the `/airdrop` endpoint on the API, adding the public key of the Solana destination account as a parameter:
+You can now invoke the `/payment` endpoint on the API, adding the public key of the Solana destination account as the first and the amount of KIN to send as second parameter:
 
 ```shell
-curl http://localhost:7890/airdrop/FaFGzKRFhrQffH7voPUgzpJA2ngsvJvtYPXcye6w4DJ9
+curl http://localhost:7890/payment/FaFGzKRFhrQffH7voPUgzpJA2ngsvJvtYPXcye6w4DJ9/42
 ```
 
-You can also add the amount of KIN to send as second parameter:
+## Docker
+
+You can also run this project using Docker.
 
 ```shell
-curl http://localhost:7890/airdrop/FaFGzKRFhrQffH7voPUgzpJA2ngsvJvtYPXcye6w4DJ9/1000
+cp .env.example .env
+# Edit the .env file
+docker compose up
 ```

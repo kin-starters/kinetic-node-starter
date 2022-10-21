@@ -1,25 +1,23 @@
 export interface ServerConfig {
-  airdropAllowExisting: boolean
-  airdropAllowNew: boolean
-  airdropAmount: string
-  airdropMax: string
-  airdropMnemonic: string
-  airdropSecret?: string
   endpoint: string
   environment: string
   index: number
+  paymentAllowExisting: boolean
+  paymentAllowNew: boolean
+  paymentMax: string
+  paymentMnemonic: string
+  paymentSecret?: string
   port: string
 }
 
 export function getServerConfig(): ServerConfig {
   const requiredEnvVars = [
-    'AIRDROP_ALLOW_EXISTING',
-    'AIRDROP_ALLOW_NEW',
-    'AIRDROP_AMOUNT',
-    'AIRDROP_MNEMONIC',
     'ENDPOINT',
     'ENVIRONMENT',
     'INDEX',
+    'PAYMENT_ALLOW_EXISTING',
+    'PAYMENT_ALLOW_NEW',
+    'PAYMENT_MNEMONIC',
     'PORT',
   ]
   const missingEnvVars = requiredEnvVars.filter((envVar) => !process.env[envVar]?.length)
@@ -30,15 +28,14 @@ export function getServerConfig(): ServerConfig {
   }
 
   return {
-    airdropAllowExisting: Boolean(process.env.AIRDROP_ALLOW_EXISTING?.toLowerCase() === 'true'),
-    airdropAllowNew: Boolean(process.env.AIRDROP_ALLOW_NEW?.toLowerCase() === 'true'),
-    airdropAmount: process.env.AIRDROP_AMOUNT!,
-    airdropMax: process.env.AIRDROP_MAX || process.env.AIRDROP_AMOUNT!,
-    airdropMnemonic: process.env.AIRDROP_MNEMONIC!,
-    airdropSecret: process.env.AIRDROP_SECRET,
     endpoint: process.env.ENDPOINT!,
     environment: process.env.ENVIRONMENT!,
     index: Number(process.env.INDEX),
+    paymentAllowExisting: Boolean(process.env.PAYMENT_ALLOW_EXISTING?.toLowerCase() === 'true'),
+    paymentAllowNew: Boolean(process.env.PAYMENT_ALLOW_NEW?.toLowerCase() === 'true'),
+    paymentMax: process.env.PAYMENT_MAX || process.env.PAYMENT_AMOUNT!,
+    paymentMnemonic: process.env.PAYMENT_MNEMONIC!,
+    paymentSecret: process.env.PAYMENT_SECRET,
     port: process.env.PORT || '7890',
   }
 }
