@@ -1,10 +1,12 @@
 import { Keypair } from '@kin-kinetic/keypair'
 import { KineticSdk } from '@kin-kinetic/sdk'
 import * as express from 'express'
+import { Request, Response } from 'express'
 
 import { Kinetic } from '../lib'
 import { airdropRoute } from './routes/airdrop.route'
 import { uptimeRoute } from './routes/uptime.route'
+import { webhookRoute } from './routes/webhook.route'
 import { ServerConfig } from './server-config'
 
 export async function server(config: ServerConfig) {
@@ -27,8 +29,12 @@ export async function server(config: ServerConfig) {
   app.use('/airdrop/:destination/:amount', airdropRoute({ kinetic }))
   app.use('/airdrop/:destination', airdropRoute({ kinetic }))
 
+  // Webhook Routes, pass in our Kinetic helper class
+  app.post('/webhook/:type', webhookRoute({ kinetic }))
+
   // Root Route, must be the last one.
-  app.use('/', uptimeRoute())
+  app.use('/uptime', uptimeRoute())
+  app.use('*', (req: Request, res: Response) => res.status(404).send('Not Found'))
 
   // Start server
   app.listen(Number(config.port), '0.0.0.0').on('listening', async () => {

@@ -1,11 +1,11 @@
 import { Keypair } from '@kin-kinetic/keypair'
-import { AppConfigMint, KineticSdk, removeDecimals } from '@kin-kinetic/sdk'
+import { AppConfigMint, KineticSdk, removeDecimals, Transaction } from '@kin-kinetic/sdk'
 import { Commitment } from '@kin-kinetic/solana'
 import { TransactionType } from '@kin-tools/kin-memo'
 import { ServerConfig } from '../server/server-config'
 
 export class Kinetic {
-  constructor(readonly config: ServerConfig, private readonly sdk: KineticSdk, private readonly keypair: Keypair) {}
+  constructor(readonly config: ServerConfig, readonly sdk: KineticSdk, private readonly keypair: Keypair) {}
 
   get mint(): AppConfigMint {
     return this.sdk.config!.mint!
@@ -92,6 +92,45 @@ export class Kinetic {
         console.log(`💧 Airdrop account: Make sure to fund this account with some ${this.mint.symbol}.`)
       }
     }
+  }
+
+  // Use the balance webhook to listen for balance changes under the specified threshold
+  handleBalanceWebhook(
+    { balance, change }: { balance: string; change: string },
+    error: (message) => void,
+    success: () => void,
+  ) {
+    console.log(`📨 Webhook: Balance: ${JSON.stringify({ balance, change }, null, 2)}`)
+    return success()
+  }
+
+  // Use the event webhook to listen for finalized transactions
+  handleEventWebhook(transaction: Transaction, error: (message) => void, success: () => void) {
+    const amount = removeDecimals(transaction.amount, transaction.decimals)
+    const destination = transaction.destination
+    const signature = transaction.signature
+
+    console.log(`📨 Webhook: Event: sent ${amount} to ${destination} ${this.sdk.getExplorerUrl(`tx/${signature}`)}`)
+    return success()
+  }
+
+  // Add verification for transactions here.
+  handleVerifyWebhook(transaction: Transaction, error: (message) => void, success: () => void) {
+    const amount = removeDecimals(transaction.amount, transaction.decimals)
+    const destination = transaction.destination
+
+    // Check if the amount is above the minimum
+    if (Number(amount) < 100) {
+      return error('Amount too low...')
+    }
+    // Check if the destination address is not the airdrop account
+    if (destination === this.publicKey) {
+      return error('Destination is airdrop account...')
+    }
+
+    // Add your own verification here...
+    console.log(`📨 Webhook: Verify: sending ${amount} to ${destination} `)
+    return success()
   }
 
   private async createAccount(): Promise<string[]> {
