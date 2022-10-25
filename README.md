@@ -51,7 +51,7 @@ yarn dev
 You can now invoke the `/payment` endpoint on the API, adding the public key of the Solana destination account as the first and the amount of KIN to send as second parameter:
 
 ```shell
-curl http://localhost:7890/payment/FaFGzKRFhrQffH7voPUgzpJA2ngsvJvtYPXcye6w4DJ9/42
+curl http://localhost:9876/payment/FaFGzKRFhrQffH7voPUgzpJA2ngsvJvtYPXcye6w4DJ9/42
 ```
 
 ## Docker

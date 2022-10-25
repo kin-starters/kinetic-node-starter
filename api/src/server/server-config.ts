@@ -36,6 +36,6 @@ export function getServerConfig(): ServerConfig {
     paymentMax: process.env.PAYMENT_MAX || process.env.PAYMENT_AMOUNT!,
     paymentMnemonic: process.env.PAYMENT_MNEMONIC!,
     paymentSecret: process.env.PAYMENT_SECRET,
-    port: process.env.PORT || '7890',
+    port: process.env.PORT || '9876',
   }
 }
