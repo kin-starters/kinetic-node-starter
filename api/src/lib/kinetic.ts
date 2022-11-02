@@ -1,7 +1,7 @@
 import { Keypair } from '@kin-kinetic/keypair'
-import { AppConfigMint, KineticSdk, removeDecimals, Transaction } from '@kin-kinetic/sdk'
-import { Commitment } from '@kin-kinetic/solana'
-import { TransactionType } from '@kin-tools/kin-memo'
+import { AppConfigMint, KineticSdk, Transaction } from '@kin-kinetic/sdk'
+import { Commitment, TransactionType } from '@kin-kinetic/solana'
+
 import { ServerConfig } from '../server/server-config'
 
 export class Kinetic {
@@ -74,7 +74,7 @@ export class Kinetic {
       await this.createAccount()
     }
 
-    console.log(`⬢ Payment: balance: ${removeDecimals(account.balance, this.mint.decimals!)} ${this.mint.symbol} `)
+    console.log(`⬢ Payment: balance: ${account.balance} ${this.mint.symbol} `)
 
     if (account.balance === '0') {
       // If the default Kinetic mint has airdrop enabled, we can fund ourselves...
@@ -107,7 +107,7 @@ export class Kinetic {
 
   // Use the event webhook to listen for finalized transactions
   handleEventWebhook(transaction: Transaction, error: (message) => void, success: () => void) {
-    const amount = removeDecimals(transaction.amount, transaction.decimals)
+    const amount = transaction.amount
     const destination = transaction.destination
     const signature = transaction.signature
 
@@ -117,7 +117,7 @@ export class Kinetic {
 
   // Add verification for transactions here.
   handleVerifyWebhook(transaction: Transaction, error: (message) => void, success: () => void) {
-    const amount = removeDecimals(transaction.amount, transaction.decimals)
+    const amount = transaction.amount
     const destination = transaction.destination
 
     // Check if the amount is above the minimum
