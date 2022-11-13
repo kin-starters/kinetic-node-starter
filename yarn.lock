@@ -639,10 +639,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kin-kinetic/keypair@1.0.0-rc.6", "@kin-kinetic/keypair@^1.0.0-rc.6":
-  version "1.0.0-rc.6"
-  resolved "https://registry.yarnpkg.com/@kin-kinetic/keypair/-/keypair-1.0.0-rc.6.tgz#53ed13684db049ec6e53bdcc933ada0357cef52c"
-  integrity sha512-X0W0iHWWQEQH8B19+KUihRGV46yChCJAKqM5SIF2SKwsB79fIV3ggCHFtUeaA3StYDspKiirwnpDLxrbt/yq0A==
+"@kin-kinetic/keypair@1.0.0-rc.7", "@kin-kinetic/keypair@^1.0.0-rc.7":
+  version "1.0.0-rc.7"
+  resolved "https://registry.yarnpkg.com/@kin-kinetic/keypair/-/keypair-1.0.0-rc.7.tgz#1d67b1e8bec99c41a4f98f5c503f4ce9c81cfdcd"
+  integrity sha512-eacl8SLBofFlWgc4G02fAASG/IKY9POlX2564lACEOKhnzpcHoRW5wCBXosvj/CFe9jQ47x1sHHPZUtdQBq6Rw==
   dependencies:
     "@scure/bip39" "1.1.0"
     "@solana/web3.js" "1.66.2"
@@ -652,23 +652,23 @@
     tslib "2.4.0"
     util "0.12.5"
 
-"@kin-kinetic/sdk@^1.0.0-rc.6":
-  version "1.0.0-rc.6"
-  resolved "https://registry.yarnpkg.com/@kin-kinetic/sdk/-/sdk-1.0.0-rc.6.tgz#69f429dd09d659ef709b402128dcd13dac814d6f"
-  integrity sha512-fly0LGjhcgufsZ0M2tf9JXx3c64UuLxLbuRlu6GnJc9HrukkEbnNgK0ExXlyMYHDKpDZHkiFPUYJzwwmDIayXw==
+"@kin-kinetic/sdk@^1.0.0-rc.7":
+  version "1.0.0-rc.7"
+  resolved "https://registry.yarnpkg.com/@kin-kinetic/sdk/-/sdk-1.0.0-rc.7.tgz#b6bb711a60b7689d2ff2b75336c8c839698579c6"
+  integrity sha512-cRykL9PD8Pi0YrWKOzqZ9EXlbn6p8Vlg2LrVZdkcSectahamDqw6nw7QM1VBCVPYa6sPYKWSfiB2fqXNEKU5nw==
   dependencies:
-    "@kin-kinetic/keypair" "1.0.0-rc.6"
-    "@kin-kinetic/solana" "1.0.0-rc.6"
+    "@kin-kinetic/keypair" "1.0.0-rc.7"
+    "@kin-kinetic/solana" "1.0.0-rc.7"
     "@solana/web3.js" "1.66.2"
     axios "0.26.1"
     bignumber.js "9.0.2"
     buffer "6.0.1"
     tslib "2.4.0"
 
-"@kin-kinetic/solana@1.0.0-rc.6", "@kin-kinetic/solana@^1.0.0-rc.6":
-  version "1.0.0-rc.6"
-  resolved "https://registry.yarnpkg.com/@kin-kinetic/solana/-/solana-1.0.0-rc.6.tgz#5c286c4604eb5343ea05841714fd08fd3320c915"
-  integrity sha512-pBvoEekdDSFEU4FXbl6qv6LsAW1zcrxRrXL2mR0qH8JWL9oz+HqGCASvwAFwzpRIVdEbHr0qsoNG+u+gGRWGwA==
+"@kin-kinetic/solana@1.0.0-rc.7", "@kin-kinetic/solana@^1.0.0-rc.7":
+  version "1.0.0-rc.7"
+  resolved "https://registry.yarnpkg.com/@kin-kinetic/solana/-/solana-1.0.0-rc.7.tgz#9bc36ffb2623b23f54dbb27c5d230728cccd7358"
+  integrity sha512-tuWaglVqXwxLQnJWexTC4HrY2DmloMQuy8/jl0g3UnZ6a7FwyroZIZR6OoKRRriud0eyH8GdjglamJPXxqb7+w==
   dependencies:
     "@solana/spl-token" "0.3.6"
     "@solana/web3.js" "1.66.2"
