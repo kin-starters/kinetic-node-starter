@@ -63,8 +63,8 @@ export class Kinetic {
     console.log(`⬢ Payment: address: ${publicKey}`)
     console.log(`⬢ Payment: allow empty accounts: ${this.config.paymentAllowNew ? 'yes' : 'no'}`)
     console.log(`⬢ Payment: allow existing accounts: ${this.config.paymentAllowExisting ? 'yes' : 'no'}`)
+    console.log(`⬢ Payment: auth secret: ${this.config.paymentAuthSecret ? 'enabled' : 'disabled'}`)
     console.log(`⬢ Payment: max: ${this.config.paymentMax}`)
-    console.log(`⬢ Payment: secret: ${this.config.paymentSecret ? 'enabled' : 'disabled'}`)
 
     // Get the balance of this account
     const account = await this.sdk.getBalance({ account: this.publicKey })

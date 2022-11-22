@@ -4,9 +4,9 @@ export interface ServerConfig {
   index: number
   paymentAllowExisting: boolean
   paymentAllowNew: boolean
+  paymentAuthSecret?: string
   paymentMax: string
   paymentMnemonic: string
-  paymentSecret?: string
   port: string
 }
 
@@ -33,9 +33,9 @@ export function getServerConfig(): ServerConfig {
     index: Number(process.env.INDEX),
     paymentAllowExisting: Boolean(process.env.PAYMENT_ALLOW_EXISTING?.toLowerCase() === 'true'),
     paymentAllowNew: Boolean(process.env.PAYMENT_ALLOW_NEW?.toLowerCase() === 'true'),
+    paymentAuthSecret: process.env.PAYMENT_AUTH_SECRET,
     paymentMax: process.env.PAYMENT_MAX || process.env.PAYMENT_AMOUNT!,
     paymentMnemonic: process.env.PAYMENT_MNEMONIC!,
-    paymentSecret: process.env.PAYMENT_SECRET,
     port: process.env.PORT || '9876',
   }
 }

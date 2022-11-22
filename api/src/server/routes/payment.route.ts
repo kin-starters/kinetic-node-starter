@@ -4,8 +4,8 @@ import { Kinetic } from '../../lib'
 export function paymentRoute({ kinetic }: { kinetic: Kinetic }) {
   return async (req: Request, res: Response) => {
     if (
-      kinetic.config.paymentSecret?.length &&
-      (!req.headers.authorization || req.headers.authorization !== kinetic.config.paymentSecret)
+      kinetic.config.paymentAuthSecret?.length &&
+      (!req.headers.authorization || req.headers.authorization !== kinetic.config.paymentAuthSecret)
     ) {
       return res.status(401).send('Unauthorized')
     }
