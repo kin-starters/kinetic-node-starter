@@ -19,7 +19,7 @@ export async function server(config: ServerConfig) {
   })
 
   // Create instance of our Kinetic helper class
-  const kinetic = new Kinetic(config, sdk, Keypair.fromMnemonic(config.paymentMnemonic))
+  const kinetic = new Kinetic(config, sdk, Keypair.fromSecret(config.paymentSecret))
 
   // Set up Express server
   const app = express()
