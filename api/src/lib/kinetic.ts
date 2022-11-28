@@ -101,7 +101,7 @@ export class Kinetic {
     error: (message) => void,
     success: () => void,
   ) {
-    console.log(`📨 Webhook: Balance: ${JSON.stringify({ balance, change }, null, 2)}`)
+    console.log(`⬢ Webhook: Balance: ${JSON.stringify({ balance, change }, null, 2)}`)
     return success()
   }
 
@@ -111,7 +111,7 @@ export class Kinetic {
     const destination = transaction.destination
     const signature = transaction.signature
 
-    console.log(`📨 Webhook: Event: sent ${amount} to ${destination} ${this.sdk.getExplorerUrl(`tx/${signature}`)}`)
+    console.log(`⬢ Webhook: Event: sent ${amount} to ${destination} ${this.sdk.getExplorerUrl(`tx/${signature}`)}`)
     return success()
   }
 
@@ -121,7 +121,7 @@ export class Kinetic {
     const destination = transaction.destination
 
     // Check if the amount is above the minimum
-    if (Number(amount) < 100) {
+    if (Number(amount) < 10) {
       return error('Amount too low...')
     }
     // Check if the destination address is not the payment account
@@ -130,7 +130,7 @@ export class Kinetic {
     }
 
     // Add your own verification here...
-    console.log(`📨 Webhook: Verify: sending ${amount} to ${destination} `)
+    console.log(`⬢ Webhook: Verify: sending ${amount} to ${destination} `)
     return success()
   }
 

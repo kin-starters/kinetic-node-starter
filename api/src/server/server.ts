@@ -39,6 +39,9 @@ export async function server(config: ServerConfig) {
   app.listen(Number(config.port), '0.0.0.0').on('listening', async () => {
     console.log(`🚀 Listening on port ${config.port}`)
 
+    console.log(`⬢ Webhook: Balance ${config.apiUrl}/webhook/balance`)
+    console.log(`⬢ Webhook: Event ${config.apiUrl}/webhook/event`)
+    console.log(`⬢ Webhook: Verify ${config.apiUrl}/webhook/verify`)
     console.log(`⬢ Kinetic: Connected to App: ${sdk.config?.app.name} ${sdk.config?.app.index} `)
     console.log(`⬢ Kinetic: Connected to API: ${sdk.config?.api.name} ${sdk.config?.api.version} `)
     console.log(
@@ -54,7 +57,7 @@ export async function server(config: ServerConfig) {
 
     // Initialize PaymentAccount
     kinetic.findOrCreateAccount().then(() => {
-      console.log(`⬢ Payment: link /payment/<destination>/<amount>`)
+      console.log(`⬢ Payment: link ${config.apiUrl}/payment/<destination>/<amount>`)
     })
   })
 }
