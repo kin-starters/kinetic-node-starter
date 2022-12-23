@@ -97,11 +97,11 @@ export class Kinetic {
 
   // Use the balance webhook to listen for balance changes under the specified threshold
   handleBalanceWebhook(
-    { balance, change }: { balance: string; change: string },
+    { balance, publicKey }: { balance: string; publicKey: string },
     error: (message) => void,
     success: () => void,
   ) {
-    console.log(`⬢ Webhook: Balance: ${JSON.stringify({ balance, change }, null, 2)}`)
+    console.log(`⬢ Webhook: Balance: ${JSON.stringify({ balance, publicKey }, null, 2)}`)
     return success()
   }
 
