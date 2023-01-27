@@ -10,13 +10,14 @@
     "docker:run": "docker run -it -p 9876:9876 --env-file ./.env ghcr.io/kin-starters/kinetic-node-starter",
     "generate-keypair": "yarn nx workspace-generator generate-keypair",
     "start": "node dist/api/main.js",
-    "test": "nx test"
+    "test": "nx test",
+    "update": "yarn add @kin-kinetic/sdk @kin-kinetic/keypair @kin-kinetic/solana"
   },
   "private": true,
   "dependencies": {
-    "@kin-kinetic/keypair": "^1.0.0-rc.12",
-    "@kin-kinetic/sdk": "^1.0.0-rc.12",
-    "@kin-kinetic/solana": "^1.0.0-rc.12",
+    "@kin-kinetic/keypair": "^1.0.0-rc.15",
+    "@kin-kinetic/sdk": "^1.0.0-rc.15",
+    "@kin-kinetic/solana": "^1.0.0-rc.15",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "tslib": "^2.4.1"
