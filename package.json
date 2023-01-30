@@ -15,9 +15,9 @@
   },
   "private": true,
   "dependencies": {
-    "@kin-kinetic/keypair": "^1.0.0-rc.15",
-    "@kin-kinetic/sdk": "^1.0.0-rc.15",
-    "@kin-kinetic/solana": "^1.0.0-rc.15",
+    "@kin-kinetic/keypair": "^1.0.0-rc.16",
+    "@kin-kinetic/sdk": "^1.0.0-rc.16",
+    "@kin-kinetic/solana": "^1.0.0-rc.16",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "tslib": "^2.4.1"
